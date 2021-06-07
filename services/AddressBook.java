@@ -58,4 +58,40 @@ public class AddressBook {
             }
         } // end of while loop
     }
+	
+	/**
+     * uc2- getting input from user and adding it to the addressbook. for
+     * storing the input arrayList has been used. all the person details is
+     * stored in a person list arraylist.
+     */
+    private void addPerson() {
+
+        PersonInfo person = new PersonInfo();
+        System.out.println("Enter First Name: ");
+        person.setFirstName(scanner.next());
+
+        System.out.println("Enter Last Name : ");
+        person.setLastName(scanner.next());
+
+        System.out.println("Enter the Address : ");
+        person.setAddress(scanner.next());
+
+        System.out.println("Enter the City : ");
+        person.setCity(scanner.next());
+
+        System.out.println("Enter the State : ");
+        person.setState(scanner.next());
+
+        System.out.println("Enter Email : ");
+        person.setEmail(scanner.next());
+
+        System.out.println("Enter  ZipCode : ");
+        person.setZipcode(scanner.nextInt());
+
+        System.out.println("Enter Phone Number: ");
+        person.setPhoneNumber(scanner.nextLong());
+        personList.add(person);
+
+    }
+	
 }
