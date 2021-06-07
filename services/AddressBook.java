@@ -94,4 +94,62 @@ public class AddressBook {
 
     }
 	
+	/**
+     * uc3- getting  name from user and then checking in the personlist.
+     * getting user with the username and then comparing with it. if user enter
+     * name is true then only the user can edit the data.
+     */
+    
+    public void editUser() {
+        System.out.println("Enter the Person name");
+        String userName = scanner.next();
+        for (int i = 0; i < personList.size(); i++) {
+            if (personList.get(i).getFirstName().equals(userName)) {
+                PersonInfo temp = personList.get(i);
+                do {
+                    System.out.println("1: edit Phone Number : ");
+                    System.out.println("2: edit Address : ");
+                    System.out.println("3: edit City : ");
+                    System.out.println("4: edit ZipCode : ");
+                    System.out.println("5: edit State : ");
+                    System.out.println("6: edit Email : ");
+
+                    int choice = scanner.nextInt();
+
+                    switch (choice) {
+                        case 1:
+                            System.out.println("Enter the new Number");
+                            temp.setPhoneNumber(scanner.nextLong());
+                            break;
+                        case 2:
+                            System.out.println("Enter the new Address");
+                            temp.setAddress(scanner.next());
+                            break;
+                        case 3:
+                            System.out.println("Enter the new city");
+                            temp.setCity(scanner.next());
+                            break;
+                        case 4:
+                            System.out.println("Enter the new ZipCode");
+                            temp.setZipcode(scanner.nextInt());
+                            break;
+                        case 5:
+                            System.out.println("Enter the new State");
+                            temp.setState(scanner.next());
+                            break;
+                        case 6:
+                            System.out.println("Enter the new Email");
+                            temp.setEmail(scanner.next());
+                            break;
+                        default:
+                            System.out.println("Enter the correct Input");
+
+                    }
+                    System.out.println("If you want to edit more thing than enter true");
+                } while (scanner.nextBoolean());
+            } // end of  if statement
+        } // end of for loop
+
+    }
+	
 }
