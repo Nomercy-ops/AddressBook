@@ -150,6 +150,38 @@ public class AddressBook {
             } // end of  if statement
         } // end of for loop
 
-    }
 	
+	
+     /**
+     * uc4- getting  first name and last name from user and then validating with the personlist name.
+     * user will be able to dele the data or record if the inserted input is true.
+     */
+    
+    public boolean deleteUser() {
+
+        System.out.println("Enter the First Name");
+        String firstName = scanner.next();
+        System.out.println("Enter the Last Name");
+        String lastName = scanner.next();
+
+        for (int i = 0; i < personList.size(); i++) {
+            if (personList.get(i).getFirstName().equals(firstName) && personList.get(i).getLastName().equals(lastName)) {
+                personList.remove(i);
+                System.out.println("user has been Deleted");
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /*
+      Displaying user details from the person list.
+    */
+
+    private void showContacts() {
+        System.out.println(personList);
+    }
+
 }
+
+	
