@@ -19,7 +19,6 @@ public class PersonInfo {
 
     /*The getter method returns the value of the attribute.
     The setter method takes a parameter and assigns it to the attribute.*/
-   
     public String getFirstName() {
         return firstName;
     }
@@ -68,7 +67,7 @@ public class PersonInfo {
         this.email = email;
     }
 
-    public long getZipcode() {
+    public int getZipcode() {
         return zipcode;
     }
 
@@ -84,10 +83,10 @@ public class PersonInfo {
         this.phoneNumber = phoneNumber;
     }
 
-    //This method returns the string itself.
     @Override
     public String toString() {
-        return "PersonInfo{" + " firstName= " + firstName + ", lastName= " + lastName + ", address= " + address + ", city= " + city + ", state= " + state + ", email= " + email + ", phoneNumber= " + phoneNumber + '}';
+        return "PersonInfo{" + "firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city=" + city + ", state=" + state + ", email=" + email + ", zipcode=" + zipcode + ", phoneNumber=" + phoneNumber + '}';
     }
 
+    //This method returns the string itself.
 }
