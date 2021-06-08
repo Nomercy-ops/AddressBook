@@ -2,7 +2,7 @@
  *
  * @author Rikesh Chhetri
  * @version 1.0
- * @Created_on: 08.06.21
+ * @Created_on: 07.06.21
  *
  * purpose: Managing user address book,user can add delete edit and show person
  * details.
@@ -11,21 +11,21 @@
 package com.bridgelabz.AddressBook.services;
 
 import com.bridgelabz.AddressBook.Model.PersonInfo; // importing person or user model from model package.
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class AddressBook {
 
     //creating array list for storing person details
-    List<PersonInfo> personList = new ArrayList<>();
+    public int indexValue = 1;
+    public HashMap<Integer, PersonInfo> personList = new HashMap<>();
     private static final Scanner scanner = new Scanner(System.in);
 
     /**
      * This is the main method from here welcome message is display.
-     * 
+     *
      */
-    
     public static void main(String[] args) {
         // creating object of a addressbook class
 
@@ -64,8 +64,8 @@ public class AddressBook {
     /**
      * uc2- getting input from user and adding it to the addressbook. for
      * storing the input arrayList has been used. all the person details is
-     * stored in a person list arraylist.
-     *  Added option for storing multiple persons.
+     * stored in a person list arraylist. Added option to add more contacts or
+     * not.
      */
     private void addContact() {
         int userChoice = 1;
@@ -95,7 +95,8 @@ public class AddressBook {
             System.out.println("Enter Phone Number: ");
             person.setPhoneNumber(scanner.nextLong());
 
-            personList.add(person);
+            personList.put(indexValue, person);
+            indexValue++;
             System.out.println("Enter 1. To Add More Persons 0.To Exit ");
             userChoice = scanner.nextInt();
         } // end of while loop
@@ -105,82 +106,64 @@ public class AddressBook {
      * uc3- getting name from user and then checking in the personlist. getting
      * user with the username and then comparing with it. if user enter name is
      * true then only the user can edit the data.
+     * used iterator through all the values of hashmap and edit that particular records.
      */
     public void editUser() {
-        System.out.println("Enter the Person name");
-        String userName = scanner.next();
-        for (int i = 0; i < personList.size(); i++) {
-            if (personList.get(i).getFirstName().equals(userName)) {
-                PersonInfo temp = personList.get(i);
-                do {
-                    System.out.println("1: edit Phone Number : ");
-                    System.out.println("2: edit Address : ");
-                    System.out.println("3: edit City : ");
-                    System.out.println("4: edit ZipCode : ");
-                    System.out.println("5: edit State : ");
-                    System.out.println("6: edit Email : ");
+        PersonInfo person = new PersonInfo();
+        System.out.println("Enter the first name to edit contact.");
+        String name = scanner.next();
+        Iterator<Integer> iterator = personList.keySet().iterator();
 
-                    int choice = scanner.nextInt();
-
-                    switch (choice) {
-                        case 1:
-                            System.out.println("Enter the new Number");
-                            temp.setPhoneNumber(scanner.nextLong());
-                            break;
-                        case 2:
-                            System.out.println("Enter the new Address");
-                            temp.setAddress(scanner.next());
-                            break;
-                        case 3:
-                            System.out.println("Enter the new city");
-                            temp.setCity(scanner.next());
-                            break;
-                        case 4:
-                            System.out.println("Enter the new ZipCode");
-                            temp.setZipcode(scanner.nextInt());
-                            break;
-                        case 5:
-                            System.out.println("Enter the new State");
-                            temp.setState(scanner.next());
-                            break;
-                        case 6:
-                            System.out.println("Enter the new Email");
-                            temp.setEmail(scanner.next());
-                            break;
-                        default:
-                            System.out.println("Enter the correct Input");
-
-                    }
-                    System.out.println("If you want to edit more thing than enter true");
-                } while (scanner.nextBoolean());
-            } // end of  if statement
-        } // end of for loop
+        while (iterator.hasNext()) {
+            int key = iterator.next();
+            if (personList.get(key).firstName.equals(name)) {
+                System.out.println("\nEnter First Name to Edit");
+                person.setFirstName(scanner.next());
+                scanner.nextLine();
+                System.out.println("Enter Last Name to Edit");
+                person.setLastName(scanner.next());
+                scanner.nextLine();
+                System.out.println("Enter Address to Edit");
+                person.setAddress(scanner.next());
+                scanner.nextLine();
+                System.out.println("Enter City to Edit");
+                person.setCity(scanner.next());
+                System.out.println("Enter State to Edit");
+                person.setState(scanner.next());
+                scanner.nextLine();
+                System.out.println("Enter Zip Code to Edit");
+                person.setZipcode(scanner.nextInt());
+                System.out.println("Enter Phone Number to Edit");
+                person.setPhoneNumber(scanner.nextLong());
+                System.out.println("Enter E-mail to Edit");
+                person.setEmail(scanner.next());
+                personList.put(key, person);
+                System.out.println("Contact edited with given first name : " + name);
+            }
+        }
     }
 
     /**
-     * uc4- getting first name and last name from user and then validating with
-     * the personlist name. user will be able to dele the data or record if the
-     * inserted input is true.
+     * uc4- getting first name from user and then validating with the personlist
+     * name. user will be able to delete the data or record if the inserted
+     * input is true.
      *
-     * @return true if deleted.
      */
-    public boolean deleteUser() {
+    public void deleteUser() {
 
         System.out.println("Enter the First Name");
-        String firstName = scanner.next();
-        System.out.println("Enter the Last Name");
-        String lastName = scanner.next();
+        String userName = scanner.next();
 
-        for (int i = 0; i < personList.size(); i++) {
-            if (personList.get(i).getFirstName().equals(firstName) && personList.get(i).getLastName().equals(lastName)) {
-                personList.remove(i);
-                System.out.println("user has been Deleted");
-                return true;
+        Iterator<Integer> iterator = personList.keySet().iterator();
+        while (iterator.hasNext()) {
+            int key = iterator.next();
+            if (personList.get(key).firstName.equals(userName)) {
+                personList.remove(key);
+                System.out.println("Contact deleted with first name : " + userName);
             }
-        } // end of for loop
-        return false;
-       
+        } // end of whileloop
     }
+
 
     /*
       Displaying user details from the person list.

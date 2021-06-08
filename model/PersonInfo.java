@@ -8,7 +8,7 @@ package com.bridgelabz.AddressBook.Model;
  */
 public class PersonInfo {
 
-    private String firstName;
+    public String firstName;
     private String lastName;
     private String address;
     private String city;
