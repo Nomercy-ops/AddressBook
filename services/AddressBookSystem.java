@@ -9,9 +9,9 @@
  *
  */
 
-package com.bridgelabz.AddressBook.services;
+package com.bridgelabz.addressbook.services;
 
-import com.bridgelabz.AddressBook.Model.PersonInfo; // importing person or user model from model package.
+import com.bridgelabz.addressbook.model.PersonInfo; // importing person or user model from model package.
 
 import java.util.HashMap;
 import java.util.HashSet;

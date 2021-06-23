@@ -1,4 +1,4 @@
-package com.bridgelabz.AddressBook.Model;
+package com.bridgelabz.addressbook.model;
 
 import java.util.Objects;
 

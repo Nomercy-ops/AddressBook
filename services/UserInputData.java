@@ -1,6 +1,6 @@
-package com.bridgelabz.AddressBook.services;
+package com.bridgelabz.addressbook.services;
 
-import com.bridgelabz.AddressBook.Model.PersonInfo;
+import com.bridgelabz.addressbook.model.PersonInfo;
 import java.util.ArrayList;
 
 import java.util.HashMap;
