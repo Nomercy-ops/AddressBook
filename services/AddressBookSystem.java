@@ -96,7 +96,7 @@ public class AddressBookSystem {
             UserInputData userDetails = new UserInputData();
             personList1 = userDetails.addUserInfo();
 
-            // checking for duplicate values if exist or not.
+            // uc7 : checking for duplicate values if exist or not.
             if (!(personList1.equals(personList))) {
                 addressBookMap.put(addressBookName, personList1);
                 System.out.println("person added successfully");
