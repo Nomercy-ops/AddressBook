@@ -9,7 +9,7 @@
  *
  */
 
-package com.bridgelabz.addressbook.services;
+package com.bridgelabz.AddressBook.services;
 
 import com.bridgelabz.AddressBook.Model.PersonInfo; // importing person or user model from model package.
 
