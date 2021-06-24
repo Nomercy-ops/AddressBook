@@ -155,6 +155,22 @@ public class AddressBookSystem {
         });
 
     }
+	
+	/**
+     * UC 11:Here persons list will be sorted in a alphabetical order.
+     *  
+     */
+
+    private void sortByName() {
+        addressBookMap.keySet().forEach((String name) -> {
+            addressBookMap.get(name).stream()
+                    .sorted(Comparator.comparing(PersonInfo::getFirstName))
+                    .collect(Collectors.toList())
+                    .forEach(person -> System.out.println(person.toString()));
+        });
+
+    }
+	
 
     /**
      * Displaying user details from the address book map.
