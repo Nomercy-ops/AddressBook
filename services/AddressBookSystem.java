@@ -171,6 +171,22 @@ public class AddressBookSystem {
 
     }
 	
+	/**
+     * UC 12:Here persons list will be sorted and displayed with city name of an alphabetical order.
+     *  
+     */
+
+    private void sortByCity() {
+
+        addressBookMap.keySet().forEach((String key) -> {
+            addressBookMap.get(key).stream()
+                    .sorted(Comparator.comparing(PersonInfo::getCity))
+                    .collect(Collectors.toList())
+                    .forEach(person -> System.out.println(person.toString()));
+        });
+
+    }
+	
 
     /**
      * Displaying user details from the address book map.
