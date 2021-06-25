@@ -84,30 +84,33 @@ class UserInputData {
             addressBookSearchList.put(city, person);
             person = null;
         }
-		
+	}
+	
 	/**
-     * UC - 10 Ability to get number of contact persons count by City.
-     * This is the search method for getting the persons list with the same
-     * city.
+     * UC - 10 Ability to get number of contact persons count by City. This is
+     * the search method for getting the persons list with the same city.
      */
+    
     public static void search() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter a city name : ");
         String userInput = scanner.next();
         if (addressBookSearchList.containsKey(userInput)) {
+            long cityCount = addressBookSearchList.entrySet().stream()
+                    .filter(p -> p.getKey().equals(userInput))
+                    .findFirst().get().getValue().size();
+            System.out.println("The count of person with this city are :" + cityCount);
+
             System.out.println("The persons list are :" + addressBookSearchList.get(userInput) + " ");
-            System.out.println("he count of person with this city are :" + addressBookSearchList.get(userInput).size());
         } else {
             System.out.println("city does not exists!");
         }
-        long cityCount = addressBookSearchList.entrySet().stream()
-                .filter(p -> p.getKey().equals(userInput))
-                .count();
 
     }
+
 
 }	
 
-    }
+    
 
    
